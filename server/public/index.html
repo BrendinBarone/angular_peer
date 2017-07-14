@@ -7,7 +7,20 @@
     <script type="text/javascript" src="scripts/client.js"></script>
   </head>
   <body>
-<input type="text" ng-model="person">
-<h3>{{person}}</h3>
+<div ng-controller="PersonController as person">
+<!-- person.name -->
+      <input type="text" ng-model="name">
+<!-- person.message -->
+      <input type="text" ng-model="message">
+
+      <button ng-click="person.addPerson(name, message)">Add Entry</button>
+
+      <!-- person is something we defined, welcome.people is the collection -->
+      <div ng-repeat="personToDisplay in person.people">
+        <p>{{ personToDisplay.name }}</p>
+        <p>{{ personToDisplay.message }}</p>
+        <button ng-click="person.delete($index)">Delete</button>
+      </div>
+    </div>
   </body>
 </html>
